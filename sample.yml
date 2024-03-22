@@ -1,0 +1,7 @@
+---
+- name: Sample playbook
+  hosts: all
+  tasks:
+    - name: Sample task
+      debug:
+        msg: This is the debug from a sample task
