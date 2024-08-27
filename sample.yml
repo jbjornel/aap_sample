@@ -17,3 +17,19 @@
     - name: Print hosts
       ansible.builtin.debug:
         var: hosts_output.stdout_lines
+
+    - name: Get /etc/hosts by command on localhost
+      ansible.builtin.command: cat /etc/hosts
+      register: hosts_output2
+      delegate_to: localhost
+
+    - name: Print hosts again
+      ansible.builtin.debug:
+        var: hosts_output2.stdout_lines
+
+
+
+    - wait_for:
+        host: jb-mgmt1.jb.lab
+        port: 5555
+        timeout: 1 
