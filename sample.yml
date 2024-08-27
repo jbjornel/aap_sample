@@ -10,10 +10,10 @@
       ansible.builtin.debug:
         msg: "{{ lookup('ansible.builtin.file', '/etc/hosts') }}"
 
-    - name: Print /etc/hosts by command
-      block:
-        - ansible.builtin.command: cat /etc/hosts
-          register: hosts_output
+    - name: Get /etc/hosts by command
+      ansible.builtin.command: cat /etc/hosts
+      register: hosts_output
 
-        - ansible.builtin.debug:
-            var: hosts_output.stdout_lines
+    - name: Print hosts
+      ansible.builtin.debug:
+      var: hosts_output.stdout_lines
