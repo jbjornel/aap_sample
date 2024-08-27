@@ -16,4 +16,4 @@
 
     - name: Print hosts
       ansible.builtin.debug:
-      var: hosts_output.stdout_lines
+        var: hosts_output.stdout_lines
