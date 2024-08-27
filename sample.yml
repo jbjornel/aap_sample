@@ -6,10 +6,13 @@
       ansible.builtin.debug:
         msg: This is the debug from a sample task
 
+
+    # This runs inside the container
     - name: Print /etc/hosts by lookup
       ansible.builtin.debug:
         msg: "{{ lookup('ansible.builtin.file', '/etc/hosts') }}"
 
+    # This runs on the inventory host
     - name: Get /etc/hosts by command
       ansible.builtin.command: cat /etc/hosts
       register: hosts_output
@@ -18,6 +21,7 @@
       ansible.builtin.debug:
         var: hosts_output.stdout_lines
 
+    # This runs inside the container
     - name: Get /etc/hosts by command on localhost
       ansible.builtin.command: cat /etc/hosts
       register: hosts_output2
@@ -28,8 +32,7 @@
         var: hosts_output2.stdout_lines
 
 
-
     - wait_for:
         host: jb-mgmt1.jb.lab
-        port: 5555
+        port: 525
         timeout: 1 
