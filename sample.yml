@@ -14,3 +14,7 @@
       ansible.builtin.debug:
         msg: "{{ lookup('ansible.builtin.pipe', 'hostname') }}"
       delegate_to: localhost
+
+    - name: Print /etc/hosts
+      ansible.builtin.debug:
+        msg: "{{ lookup('ansible.builtin.file', '/etc/hosts') }}"
