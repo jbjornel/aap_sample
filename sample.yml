@@ -16,4 +16,4 @@
           register: hosts_output
 
         - ansible.builtin.debug:
-          var: hosts_output.stdout_lines
+            var: hosts_output.stdout_lines
