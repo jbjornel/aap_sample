@@ -5,3 +5,12 @@
     - name: Sample task
       ansible.builtin.debug:
         msg: This is the debug from a sample task
+
+    - name: Print hostname
+      ansible.builtin.debug:
+        msg: "{{ lookup('ansible.builtin.pipe', 'hostname') }}"
+
+    - name: Print localhost hostname
+      ansible.builtin.debug:
+        msg: "{{ lookup('ansible.builtin.pipe', 'hostname') }}"
+      delegate_to: localhost
